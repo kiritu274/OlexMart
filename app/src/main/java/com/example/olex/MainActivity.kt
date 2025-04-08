@@ -19,11 +19,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -68,11 +70,12 @@ fun RegisterScreen(){
     var password by remember{ mutableStateOf(value = "")  }
     var context = LocalContext.current
     Column (modifier = Modifier.fillMaxSize()
-        .background(Brush.verticalGradient(listOf(Color(0xFF64B5F6), Color(0xFF1976D2))))
-        .padding(16.dp).fillMaxHeight().fillMaxWidth(), verticalArrangement = Arrangement.Center){
-        Text(text = "Register Here!!",
+        .background(color = Color.Black)
+        .padding(50.dp).fillMaxHeight().fillMaxWidth(), verticalArrangement = Arrangement.Center
+        ){
+        Text(text = "Sign up",
             fontSize = 40.sp,
-            color = Color.Black,
+            color = Color.White,
             fontFamily = FontFamily.SansSerif,
             fontStyle = FontStyle.Normal,
             textAlign = TextAlign.Center,
@@ -83,6 +86,7 @@ fun RegisterScreen(){
         Spacer(modifier = Modifier.height(10.dp))
         Image(painter = painterResource(R.drawable.logo),
             contentDescription = "logo",
+
             modifier = Modifier
                 .wrapContentHeight()
                 .fillMaxWidth()
@@ -93,38 +97,49 @@ fun RegisterScreen(){
             onValueChange = {newFirstName -> firstname = newFirstName},
             label = {Text(text = "Enter first Name") },
             placeholder = {Text(text = "Please enter firstname")},
-            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally))
+
+            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally),
+            shape = RoundedCornerShape(16.dp)
+
+            )
         Spacer(modifier = Modifier.height(10.dp))
         OutlinedTextField(value = lastname,
             onValueChange = {newLastName ->lastname = newLastName},
             label = {Text(text = "Enter last Name" )},
             placeholder = {Text(text = "Please enter lastname")},
-            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally))
+            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally),
+            shape = RoundedCornerShape(16.dp))
         Spacer(modifier = Modifier.height(10.dp))
         OutlinedTextField(value = email,
             onValueChange = {newEmail -> email = newEmail},
             label = {Text(text = "Enter Email")},
             placeholder = {Text(text = "Please enter your email")},
-            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally))
+            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally),
+            shape = RoundedCornerShape(16.dp ),
+            )
         Spacer(modifier = Modifier.height(10.dp))
         OutlinedTextField(value = password,
             onValueChange = {newPassword ->password = newPassword},
             label = {Text(text = "Enter Password")},
             placeholder = {Text(text = "Please enter your password")},
-            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally))
+
+            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally),
+            shape = RoundedCornerShape(16.dp)
+        )
         Spacer(modifier = Modifier.height(10.dp))
         Button(onClick = {},
-            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally),
-            colors = ButtonDefaults.buttonColors(Color.Green)) {
+            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally).fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(Color.Magenta)) {
             Text(text = "Register")
 
 
         }
-        Text(text = buildAnnotatedString { append("If already registered, Login here") },
+        Text(text = buildAnnotatedString { append(" Already have an account? Login in") },
+            color = Color.White,
             modifier = Modifier.wrapContentWidth()
                 .align(Alignment.CenterHorizontally)
                 .clickable{
-                    val intent = Intent(context, DashboardActivity::class.java)
+                    val intent = Intent(context, AddproductActivity::class.java)
                     context.startActivity(intent)
                 })
 

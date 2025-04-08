@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.sp
 import com.example.olex.ui.theme.OlexTheme
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.graphics.graphicsLayer
 
 
@@ -68,11 +69,11 @@ fun LoginScreen (){
     var context = LocalContext.current
     Column  (modifier = Modifier
         .fillMaxSize()
-        .background(Brush.verticalGradient(listOf(Color(0xFF64B5F6), Color(0xFF1976D2))))
-        .padding(16.dp).fillMaxHeight().fillMaxWidth(), verticalArrangement = Arrangement.Center){
-        Text(text = "Login here",
+        .background(color = Color.Black)
+        .padding(50.dp).fillMaxHeight().fillMaxWidth(), verticalArrangement = Arrangement.Center){
+        Text(text = "Login in",
             fontSize = 40.sp,
-            color = Color.Black,
+            color = Color.White,
             fontFamily = FontFamily.SansSerif,
             fontStyle = FontStyle.Normal,
             textAlign = TextAlign.Center,
@@ -93,22 +94,25 @@ fun LoginScreen (){
             onValueChange = {newEmail -> email = newEmail},
             label = {Text(text = "Enter Email")},
             placeholder = {Text(text = "Please enter your email")},
-            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally))
+            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally),
+            shape = RoundedCornerShape(16.dp))
         Spacer(modifier = Modifier.height(10.dp))
         OutlinedTextField(value = password,
             onValueChange = {newPassword ->password = newPassword},
             label = {Text(text = "Enter Password")},
             placeholder = {Text(text = "Please enter your password")},
-            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally))
+            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally),
+            shape = RoundedCornerShape(16.dp))
         Spacer(modifier = Modifier.height(10.dp))
         Button(onClick = {},
-            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally),
-            colors = ButtonDefaults.buttonColors(Color.Green)) {
+            modifier = Modifier.wrapContentWidth().align(Alignment.CenterHorizontally).fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(Color.Magenta)) {
             Text(text = "Login")
 
 
         }
-        Text(text = buildAnnotatedString { append("Don't have an Account, Register here") },
+        Text(text = buildAnnotatedString { append("Don't have an Account? Sign up") },
+            color = Color.White,
             modifier = Modifier.wrapContentWidth()
                 .align(Alignment.CenterHorizontally)
                 .clickable{

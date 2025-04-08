@@ -13,6 +13,11 @@
         android:theme="@style/Theme.Olex"
         tools:targetApi="31">
         <activity
+            android:name=".AddproductActivity"
+            android:exported="false"
+            android:label="@string/title_activity_addproduct"
+            android:theme="@style/Theme.Olex" />
+        <activity
             android:name=".DashboardActivity"
             android:exported="false"
             android:label="@string/title_activity_dashboard"
